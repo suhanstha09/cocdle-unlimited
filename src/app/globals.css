@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .coc-stroke-sm {
+    -webkit-text-stroke: 1.5px #1f1209;
+    paint-order: stroke fill;
+    text-shadow: 0 2px 0 #1f1209;
+  }
+
+  .coc-stroke-md {
+    -webkit-text-stroke: 2.5px #1f1209;
+    paint-order: stroke fill;
+    text-shadow: 0 3px 0 #1f1209;
+  }
+
+  .coc-stroke-lg {
+    -webkit-text-stroke: 4px #1f1209;
+    paint-order: stroke fill;
+    text-shadow: 0 5px 0 #1f1209, 0 8px 16px rgba(0, 0, 0, 0.65);
+  }
+
+  .wood-grain {
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(31, 18, 9, 0.14) 0px,
+        rgba(31, 18, 9, 0.14) 2px,
+        transparent 2px,
+        transparent 14px
+      ),
+      linear-gradient(180deg, #965c2b 0%, #7c4a21 52%, #593314 100%);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #faf0d7;
+  background-color: #17110b;
+  overflow-x: hidden;
+}
