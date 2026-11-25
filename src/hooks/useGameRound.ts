@@ -23,6 +23,7 @@ interface UseGameRoundProps {
   activeModifiers: ModifierItem["id"][];
   onWin: (triesCount: number) => void;
   onLoss: () => void;
+  onSetOpenModal?: (modal: "victory" | "defeat") => void;
 }
 
 export function useGameRound({
@@ -31,6 +32,7 @@ export function useGameRound({
   activeModifiers,
   onWin,
   onLoss,
+  onSetOpenModal,
 }: UseGameRoundProps) {
   const [recentSecrets, setRecentSecrets, recentHydrated] = useLocalStorage<
     Record<GameMode, string[]>
@@ -102,6 +104,7 @@ export function useGameRound({
           status: "won",
         });
         onWin(updatedGuesses.length);
+        onSetOpenModal?.("victory");
         return;
       }
 
@@ -112,6 +115,7 @@ export function useGameRound({
           status: "lost",
         });
         onLoss();
+        onSetOpenModal?.("defeat");
         return;
       }
 

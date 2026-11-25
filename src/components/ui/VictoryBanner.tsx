@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useRef, useState, useEffect } from "react";
+import React, { useMemo, useRef } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { EntityArtwork } from "./EntityArtwork";
@@ -28,19 +28,9 @@ export function VictoryBanner({
   reduceMotion,
   onPlayAgain,
 }: VictoryBannerProps) {
-  const router = useRouter();
+const router = useRouter();
   const isWon = status === "won";
   const bannerRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { rootMargin: "200px" }
-    );
-    if (bannerRef.current) observer.observe(bannerRef.current);
-    return () => observer.disconnect();
-  }, []);
 
   const confettiPieces = useMemo(() => {
     return Array.from({ length: 28 }, (_, i) => ({
@@ -58,8 +48,8 @@ export function VictoryBanner({
       ref={bannerRef}
       className="relative mt-6 overflow-hidden rounded-3xl border-[4px] border-[#1F1209] bg-gradient-to-b from-[#49311E] via-[#332113] to-[#23160C] p-5 text-center shadow-[0_8px_0_#1F1209,0_16px_30px_rgba(0,0,0,0.6)]"
       style={{ 
-        transform: isVisible ? "translateY(0)" : "translateY(20px)", 
-        opacity: isVisible ? 1 : 0 
+        transform: "translateY(0)", 
+        opacity: 1 
       }}
     >
       {/* Confetti Burst on Win */}

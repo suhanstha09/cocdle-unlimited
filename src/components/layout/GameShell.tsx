@@ -26,7 +26,9 @@ type ActiveModal =
   | "modifiers"
   | "changelog"
   | "howtoplay"
-  | "settings";
+  | "settings"
+  | "victory"
+  | "defeat";
 
 interface GameShellProps {
   mode: GameMode;
